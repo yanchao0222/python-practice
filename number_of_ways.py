@@ -1,7 +1,8 @@
 from tqdm import tqdm
 
 
-def numberOfWays(startPos: int, endPos: int, k: int) -> int:
+# I tried to get thsi to work, but it's not working
+def numberOfWays(startPos: int, endPos: int, k: int) -> int: 
     """
     Solving Leetcode Problem.
     https://leetcode.com/problems/number-of-ways-to-reach-a-position-after-exactly-k-steps/
@@ -16,31 +17,41 @@ def numberOfWays(startPos: int, endPos: int, k: int) -> int:
     perform exactly k steps.
     """
     # start with path of length 1
-    paths = [startPos]
+    paths = [[startPos]]
 
     # loop k times
     for i in tqdm(range(k)):
+        print(i)
+        extended_paths = []
         for path in paths:
+            # if len(path) > k:
+            #     break
+
             new_path = path.copy()
             last_position = new_path[-1]
 
             # exist fast if not going to make to end
-            if endPos - last_position > (k - i - 1):
+            if endPos - last_position > (k - i ):
                 continue
             # path that goes to the left
             new_path_left = new_path + [last_position - 1]
-
             # path that goes to the right
-            new_path_right = new_path + [last_position - 1]
+            new_path_right = new_path + [last_position + 1]
 
+            if len(new_path_left) > k+1:
+                break
             # add paths to the left and right
-            paths.append(new_path_left)
-            paths.append(new_path_right)
+            extended_paths.append(new_path_left)
+            extended_paths.append(new_path_right)
+
+        paths = extended_paths.copy()
+
 
     num_ways = 0
     for path in paths:
         if path[-1] == endPos:
-            new_ways += 1
+            num_ways += 1
+            print(path)
     return num_ways
 
 
