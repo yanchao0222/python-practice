@@ -24,9 +24,6 @@ def numberOfWays(startPos: int, endPos: int, k: int) -> int:
         print(i)
         extended_paths = []
         for path in paths:
-            # if len(path) > k:
-            #     break
-
             new_path = path.copy()
             last_position = new_path[-1]
 
@@ -45,7 +42,6 @@ def numberOfWays(startPos: int, endPos: int, k: int) -> int:
             extended_paths.append(new_path_right)
 
         paths = extended_paths.copy()
-
 
     num_ways = 0
     for path in paths:
