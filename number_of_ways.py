@@ -1,6 +1,5 @@
 from tqdm import tqdm
 
-
 # I tried to get thsi to work, but it's not working
 def numberOfWays(startPos: int, endPos: int, k: int) -> int: 
     """
@@ -18,7 +17,6 @@ def numberOfWays(startPos: int, endPos: int, k: int) -> int:
     """
     # start with path of length 1
     paths = [[startPos]]
-
     # loop k times
     for i in tqdm(range(k)):
         extended_paths = []
@@ -48,7 +46,6 @@ def numberOfWays(startPos: int, endPos: int, k: int) -> int:
             num_ways += 1
             print(path)
     return num_ways
-
 
 def test_number_of_ways():
     """
