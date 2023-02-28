@@ -21,7 +21,6 @@ def numberOfWays(startPos: int, endPos: int, k: int) -> int:
 
     # loop k times
     for i in tqdm(range(k)):
-        print(i)
         extended_paths = []
         for path in paths:
             new_path = path.copy()
